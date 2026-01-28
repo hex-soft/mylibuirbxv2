@@ -395,27 +395,27 @@ function Library:create(options)
 	}
 
 	if readfile and writefile and isfile then
-		if not isfile("MercurySettings.json") then
-			writefile("MercurySettings.json", HTTPService:JSONEncode(settings))
+		if not isfile("MoonSettings.json") then
+			writefile("MoonSettings.json", HTTPService:JSONEncode(settings))
 		end
-		settings = HTTPService:JSONDecode(readfile("MercurySettings.json"))
+		settings = HTTPService:JSONDecode(readfile("MoonSettings.json"))
 		Library.CurrentTheme = Library.Themes[settings.Theme]
 		updateSettings = function(property, value)
 			settings[property] = value
-			writefile("MercurySettings.json", HTTPService:JSONEncode(settings))
+			writefile("MoonSettings.json", HTTPService:JSONEncode(settings))
 		end
 	end
 
 	options = self:set_defaults({
-		Name = "Mercury",
+		Name = "Moon",
 		Size = UDim2.fromOffset(600, 400),
 		Theme = self.Themes[settings.Theme],
 		Link = "https://github.com/hex-soft/mylibuirbxv2/"
 	}, options)
 
-	if getgenv and getgenv().MercuryUI then
-		getgenv():MercuryUI()
-		getgenv().MercuryUI = nil
+	if getgenv and getgenv().MoonUI then
+		getgenv():MoonUI()
+		getgenv().MoonUI = nil
 	end
 
 
@@ -564,7 +564,7 @@ function Library:create(options)
 	end
 
 	if getgenv then
-		getgenv().MercuryUI = closeUI
+		getgenv().MoonUI = closeUI
 	end
 
 	closeButton.MouseButton1Click:connect(function()
@@ -865,7 +865,7 @@ function Library:create(options)
 
 	creditsTab:credit{Name = "Abstract", Description = "UI Library Developer", Discord = "Abstract#8007", V3rmillion = "AbstractPoo"}
 	creditsTab:credit{Name = "Deity", Description = "UI Library Developer", Discord = "Deity#0228", V3rmillion = "0xDEITY"}
-	creditsTab:credit{Name = "Repository", Description = "UI Library Repository", Github="https://github.com/deeeity/mercury-lib/blob/master/src.lua"}
+	creditsTab:credit{Name = "Repository", Description = "UI Library Repository", Github="https://github.com/deeeity/Moon-lib/blob/master/src.lua"}
 
 	return mt
 end
